@@ -18,5 +18,11 @@ class PredictView(APIView):
             image = Image.open(serializer.validated_data['image']).convert('RGB')
             image_tensor = val_test_transforms(image)
             prediction = model.predict(image_tensor)
-            return Response({'prediction': prediction})
+            
+            # Devolvemos tanto la clase como la confianza
+            return Response({
+                'prediction': prediction['class_id'],
+                'confidence': prediction['confidence'],
+                'details': prediction
+            })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

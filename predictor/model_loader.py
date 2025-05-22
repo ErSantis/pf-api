@@ -18,9 +18,17 @@ class SkinDiseaseModel:
         )
         self.model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))
         self.model.eval()
-
+        
     def predict(self, image_tensor):
         with torch.no_grad():
             output = self.model(image_tensor.unsqueeze(0))
-            _, predicted = torch.max(output, 1)
-        return predicted.item()
+            probabilities = torch.nn.functional.softmax(output, dim=1)[0]
+            top_prob, top_class = torch.max(probabilities, 0)
+            
+            class_idx = top_class.item()
+            confidence = top_prob.item() * 100
+            
+            return {
+                "class_id": class_idx,
+                "confidence": round(confidence, 2)
+            }
