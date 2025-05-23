@@ -157,3 +157,5 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
+
+ALLOWED_HOSTS = ["*", "pf-api-1.onrender.com"]
