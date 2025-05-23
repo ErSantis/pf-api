@@ -7,7 +7,7 @@ def test_prediction_api():
     url = "http://localhost:8000/api/predict/"
     
     # Verificamos si existe el archivo de prueba
-    image_path = "test.jpg"  # Utilizamos la imagen que ya existe en el directorio
+    image_path = "test3.jpg"  # Utilizamos la imagen que ya existe en el directorio
     
     if not os.path.exists(image_path):
         print(f"Error: No se encontró la imagen de prueba '{image_path}'")

@@ -9,7 +9,7 @@ import os
 
 # Inicializa el modelo una vez
 model_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), './model/best_model.pth')
-model = SkinDiseaseModel(model_path, num_classes=23)  # Actualizado para coincidir con el modelo guardado
+model = SkinDiseaseModel(model_path, num_classes=15)  # Actualizado para coincidir con el modelo guardado
 
 class PredictView(APIView):
     def post(self, request):
@@ -19,10 +19,11 @@ class PredictView(APIView):
             image_tensor = val_test_transforms(image)
             prediction = model.predict(image_tensor)
             
-            # Devolvemos tanto la clase como la confianza
+            # Devolvemos el nombre de la enfermedad, la confianza y las recomendaciones
             return Response({
-                'prediction': prediction['class_id'],
-                'confidence': prediction['confidence'],
-                'details': prediction
+                'enfermedad': prediction['disease_name'],
+                'confianza': prediction['confidence'],
+                'descripcion': prediction['description'],
+                'recomendaciones': prediction['recommendations'],
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
