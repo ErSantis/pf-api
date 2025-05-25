@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+-dc+$01ey)z%+pr_(v!=$rhwde!v2bh)ow3p8l!u$#9tzsod1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '*']
 
 
 # Application definition
@@ -157,5 +157,3 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "x-requested-with",
 ]
-
-ALLOWED_HOSTS = ["*", "pf-api-1.onrender.com"]

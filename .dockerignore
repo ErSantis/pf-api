@@ -1,0 +1,52 @@
+# Virtual Environment
+env/
+venv/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/__pycache__
+predictor/__pycache__
+
+# Django stuff
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Docker stuff
+.dockerignore
+Dockerfile
+.gitignore
+
+# IDE related
+.idea/
+.vscode/
+*.swp
+*.swo
+
+test_api.py
+predictor/migrations
